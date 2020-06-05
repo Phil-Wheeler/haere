@@ -5,4 +5,17 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="dialog-container">
+    <LoginPrompt />
+</div>
+
+
+@code
+{
+    private async Task TryLogin(){
+        var identityProvider = "https://solid.community/";
+
+        var response = await JSRuntime.InvokeAsync<string>("GetIdentityProvider", identityProvider);
+    }
+}
