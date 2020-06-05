@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../wwwroot/js'),
-        filename: "my_lib.js",
-        library: "MyLib"
+        filename: "haere-app.js",
+        library: "HaereLib"
     }
 };

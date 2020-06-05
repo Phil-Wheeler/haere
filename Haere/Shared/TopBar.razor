@@ -1,0 +1,17 @@
+@inject IJSRuntime JSRuntime;
+
+<a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+
+<button type="button" @onclick="TryLogin">Log in</button>
+
+
+
+
+@code
+{
+    private async Task TryLogin(){
+        //var identityProvider = "https://solid.community/";
+
+        var response = await JSRuntime.InvokeAsync<string>("HaereLib.GetWebId");
+    }
+}

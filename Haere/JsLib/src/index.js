@@ -5,6 +5,6 @@ export function GetWebId(){
 }
 
 
-window.GetIdentityProvider = (provider) => {
-    console.info(provider);
-}
+// window.GetIdentityProvider = (provider) => {
+//     console.info(provider);
+// }
