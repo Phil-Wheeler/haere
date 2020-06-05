@@ -1,0 +1,26 @@
+
+<div class="dialog">
+    <h3>Sign in to Haere</h3>
+    <p>Please enter your WebID or the URL of your identity provider</p>
+    <input type="url" aria-placeholder="Web ID or URL" value="@SelectedProvider">
+    <select @onchange="PickProvider">
+        <option value="inrupt.net">https://inrupt.net</option>
+        <option value="solid.community">https://solid.community</option>
+    </select>
+    <input type="text" placeholder="Name">
+    <input type="password" placeholder="Password">
+    <button type="button">Sign in</button>
+</div>
+
+
+@code {
+    // https://solid.community
+    // https://inrupt.net
+    private string SelectedProvider = "";
+
+    private void PickProvider(ChangeEventArgs eventArgs)
+    {
+        string value = eventArgs.Value.ToString();
+        SelectedProvider = value;
+    }
+}

@@ -9,6 +9,11 @@ Welcome to your new app.
 
 <button type="button" @onclick="TryLogin">Log in</button>
 
+<div class="dialog-container">
+    <LoginPrompt />
+</div>
+
+
 @code
 {
     private async Task TryLogin(){
