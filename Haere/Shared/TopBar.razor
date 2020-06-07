@@ -1,4 +1,5 @@
 @inject IJSRuntime JSRuntime;
+@inject NotifierService Notifier
 
 <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
 
@@ -9,9 +10,13 @@
 
 @code
 {
+    private bool isVisible = false;
+
     private async Task TryLogin(){
         //var identityProvider = "https://solid.community/";
+        isVisible = !isVisible;
+        await Notifier.Update(isVisible);
 
-        var response = await JSRuntime.InvokeAsync<string>("HaereLib.GetWebId");
+        //var response = await JSRuntime.InvokeAsync<string>("HaereLib.GetWebId");
     }
 }
