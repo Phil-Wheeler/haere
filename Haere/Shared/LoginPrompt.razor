@@ -23,6 +23,7 @@
 
     private string SelectedProvider = "";
     private string WebId = "";
+
     public bool IsVisible { get; set; }
 
     private void PickProvider(ChangeEventArgs eventArgs)
@@ -53,6 +54,7 @@
         var response = await JSRuntime.InvokeAsync<string>("HaereLib.GetIdentityProvider", identityProvider);
         WebId = response;
         Console.WriteLine(response);
+        await GetName();
     }
 
     private async Task GetName(){
