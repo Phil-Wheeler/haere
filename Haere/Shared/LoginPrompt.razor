@@ -1,3 +1,4 @@
+@using System;
 @inject NotifierService Notifier
 @inject IJSRuntime JSRuntime;
 
@@ -53,14 +54,19 @@
 
         var response = await JSRuntime.InvokeAsync<string>("HaereLib.GetIdentityProvider", identityProvider);
         WebId = response;
-        Console.WriteLine(response);
-        await GetName();
+
+        await JSRuntime.InvokeAsync<string>("HaereLib.WriteSession", "webId", response);
+        
+        //await GetName();
     }
 
     private async Task GetName(){
-        Console.WriteLine("Getting name");
-        var result = await JSRuntime.InvokeAsync<string>("HaereLib.GetName", WebId);
-        Console.WriteLine(result);
+        var existingId = await JSRuntime.InvokeAsync<string>("HaereLib.ReadSession", "webId");
+        
+        if (!String.IsNullOrEmpty(existingId))
+        {
+            var result = await JSRuntime.InvokeAsync<string>("HaereLib.GetName", existingId);
+        }
     }
 
     public void Dispose()

@@ -23,3 +23,11 @@ export async function getName(webId) {
   /* 3. Get their foaf:name: */
   return profile.getString(foaf.name);
 }
+
+export async function readSession(key){
+  return sessionStorage.getItem(key);
+}
+
+export async function writeSession(key, value){
+  return sessionStorage.setItem(key, value);
+}
